@@ -206,7 +206,7 @@ export default class Tooltip {
                 switch (evt) {
                 case 'click':
                     lis('click', (e) => { this._onToggle(e); }, false);
-                    // document[evtType]('click', this._onDeactivate.bind(this), false);
+                    document[evtType]('click', this._onDeactivate.bind(this), false);
                     break;
                 case 'hover':
                     lis('mouseenter', this._onActivate.bind(this), false);
