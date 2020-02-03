@@ -116,6 +116,7 @@ export default class Tooltip {
     }
 
     toggle (visible, autoHide = true) {
+        this._$tt.update();
         let delay = this._options.delay;
 
         if (this.disabled === true) {
@@ -205,8 +206,9 @@ export default class Tooltip {
             this.options.triggers.map(evt => {
                 switch (evt) {
                 case 'click':
-                    lis('click', (e) => { this._onToggle(e); }, false);
                     document[evtType]('click', this._onDeactivate.bind(this), false);
+                    lis('click', (e) => { this._onToggle(e); }, false);
+                    lis('mouseleave', this._onDeactivate.bind(this), false);
                     break;
                 case 'hover':
                     lis('mouseenter', this._onActivate.bind(this), false);
