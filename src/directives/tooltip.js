@@ -190,7 +190,7 @@ export default class Tooltip {
             console.error('trigger should be an array', this.options.triggers); // eslint-disable-line
             return;
         }
-
+        document[evtType]('click', this._onDeactivate.bind(this), false);
         let lis = (...params) => this._$el[evtType](...params);
 
         if (includes(this.options.triggers, 'manual')) {
@@ -202,13 +202,12 @@ export default class Tooltip {
                 const click = includes(this.options.triggers, 'click');
                 this._options.triggers[pos] = (click !== -1) ? 'click' : null;
             }
-
             this.options.triggers.map(evt => {
                 switch (evt) {
                 case 'click':
                     document[evtType]('click', this._onDeactivate.bind(this), false);
                     lis('click', (e) => { this._onToggle(e); }, false);
-                    lis('mouseleave', this._onDeactivate.bind(this), false);
+                    lis('mouseleave', this._onDeactivate.bind(this), false); //for ios
                     break;
                 case 'hover':
                     lis('mouseenter', this._onActivate.bind(this), false);
