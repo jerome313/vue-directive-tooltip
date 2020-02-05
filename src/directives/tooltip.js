@@ -141,7 +141,7 @@ export default class Tooltip {
                     // add tooltip node
                     // this._$el.insertAdjacentElement('afterend', this._$tpl);
                     document.querySelector('body').appendChild(this._$tpl);
-
+                    this._$tt.update();
                     // Need the timeout to be sure that the element is inserted in the DOM
                     setTimeout(() => {
                         // enable eventListeners
