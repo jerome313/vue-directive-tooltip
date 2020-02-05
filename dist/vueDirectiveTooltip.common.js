@@ -2732,6 +2732,8 @@ function () {
           if (_this2.visible === true && _this2.disabled !== true) {
             // add tooltip node
             // this._$el.insertAdjacentElement('afterend', this._$tpl);
+            _this2._$tt.update();
+
             document.querySelector('body').appendChild(_this2._$tpl);
 
             _this2._$tt.update(); // Need the timeout to be sure that the element is inserted in the DOM
