@@ -2792,6 +2792,8 @@ function () {
         return;
       }
 
+      document[evtType]('click', this._onDeactivate.bind(this), false);
+
       var lis = function lis() {
         var _this3$_$el;
 
@@ -2815,7 +2817,8 @@ function () {
               lis('click', function (e) {
                 _this3._onToggle(e);
               }, false);
-              lis('mouseleave', _this3._onDeactivate.bind(_this3), false);
+              lis('mouseleave', _this3._onDeactivate.bind(_this3), false); //for ios
+
               break;
 
             case 'hover':
